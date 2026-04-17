@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-e49a2bede5f34e3f61475973e52cb374"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "count", "scale": {"scheme": "blues"}, "title": "Sightings", "type": "quantitative"}, "tooltip": [{"field": "state", "type": "nominal"}, {"field": "count", "type": "quantitative"}], "x": {"field": "count", "title": "Number of Sightings", "type": "quantitative"}, "y": {"field": "state", "sort": "-x", "title": "State", "type": "nominal"}}, "title": "Top 15 U.S. States by UFO Sightings", "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-e49a2bede5f34e3f61475973e52cb374": [{"state": "CA", "count": 8912}, {"state": "WA", "count": 3966}, {"state": "FL", "count": 3835}, {"state": "TX", "count": 3447}, {"state": "NY", "count": 2980}, {"state": "IL", "count": 2499}, {"state": "AZ", "count": 2414}, {"state": "PA", "count": 2366}, {"state": "OH", "count": 2275}, {"state": "MI", "count": 1836}, {"state": "OR", "count": 1747}, {"state": "NC", "count": 1740}, {"state": "MO", "count": 1458}, {"state": "CO", "count": 1413}, {"state": "IN", "count": 1288}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
